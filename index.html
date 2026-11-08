@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamer Store - تامر ستور</title>
+  <!-- أيكونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* قسم اللوجو فوق */
+    .logo-container {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .logo-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #6366f1;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .brand-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-top: 12px;
+      color: #f8fafc;
+    }
+
+    .brand-subtitle {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* قائمة الروابط */
+    .links-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .link-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .link-card i {
+      font-size: 1.3rem;
+      width: 30px;
+      text-align: center;
+    }
+
+    /* هوفر الألوان */
+    .link-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .facebook:hover { background: rgba(24, 119, 242, 0.25); color: #1877f2; }
+    .instagram:hover { background: rgba(225, 48, 108, 0.25); color: #e1306c; }
+    .tiktok:hover { background: rgba(255, 0, 80, 0.25); color: #ff0050; }
+    .whatsapp:hover { background: rgba(37, 211, 102, 0.25); color: #25d366; }
+    .maps:hover { background: rgba(234, 67, 53, 0.25); color: #ea4335; }
+    .instapay:hover { background: rgba(124, 58, 237, 0.25); color: #a78bfa; }
+    .wallet:hover { background: rgba(245, 158, 11, 0.25); color: #fbbf24; }
+
+    /* رقم الواتساب تحت خالص */
+    .footer-whatsapp {
+      margin-top: 25px;
+      padding: 12px 24px;
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      border-radius: 30px;
+      color: #25d366;
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-whatsapp:hover {
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+    }
+
+    /* رسالة التنبيه للنسخ */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      background: #4f46e5;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 1. اللوجو والاسم -->
+    <div class="logo-container">
+      <h1 class="brand-title">Tamer Store</h1>
+      <p class="brand-subtitle">Tamer for premium sneakers - ش. سعد زغلول، الإسكندرية</p>
+    </div>
+
+    <!-- 2. الروابط -->
+    <div class="links-wrapper">
+      
+      <!-- فيسبوك -->
+      <a href="https://www.facebook.com/profile.php?id=61590611968673" target="_blank" class="link-card facebook">
+        <div class="link-content">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span>صفحتنا على فيسبوك</span>
+        </div>
+        <i class="fa-solid fa-chevron-left"></i>
+      </a>
+
+      <!-- انستجرام -->
+      <a href="https://instagram.com/tame_rstore" target="_blank" class="link-card instagram">
+        <div class="link-content">
+          <i class="fa-brands fa-instagram"></i>
+          <span>انستجرام - Instagram</span>
+        </div>
+        <i class="fa-solid fa-chevron-left"></i>
+      </a>
+
+      <!-- تيك توك -->
+      <a href="https://www.tiktok.com/@tamer.store6" target="_blank" class="link-card tiktok">
+        <div class="link-content">
+          <i class="fa-brands fa-tiktok"></i>
+          <span>تيك توك - TikTok</span>
+        </div>
+        <i class="fa-solid fa-chevron-left"></i>
+      </a>
+
+      <!-- واتساب -->
+      <a href="https://wa.me/201278170320" target="_blank" class="link-card whatsapp">
+        <div class="link-content">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>راسلنا على الواتساب</span>
+        </div>
+        <i class="fa-solid fa-chevron-left"></i>
+      </a>
+
+      <!-- جوجل مابس -->
+      <a href="Https://maps.app.goo.gl/cxxFzudaL8LLS4fZ7?g_st=ic" target="_blank" class="link-card maps">
+        <div class="link-content">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>موقعنا على الخريطة (Google Maps)</span>
+        </div>
+        <i class="fa-solid fa-chevron-left"></i>
+      </a>
+
+      <!-- انستا باي (نسخ تلقائي) -->
+      <div class="link-card instapay" onclick="copyText('01070308871', 'تم نسخ حساب إنستا باي بنجاح! 📋')">
+        <div class="link-content">
+          <i class="fa-solid fa-money-bill-transfer"></i>
+          <span>إنستا باي (اضغط للنسخ)</span>
+        </div>
+        <i class="fa-regular fa-copy"></i>
+      </div>
+
+      <!-- رقم المحفظة (نسخ تلقائي) -->
+      <div class="link-card wallet" onclick="copyText('01278170320', 'تم نسخ رقم المحفظة بنجاح! 📋')">
+        <div class="link-content">
+          <i class="fa-solid fa-wallet"></i>
+          <span>رقم المحفظة (اضغط للنسخ)</span>
+        </div>
+        <i class="fa-regular fa-copy"></i>
+      </div>
+
+    </div>
+
+    <!-- 3. خدمة العملاء واتساب تحت -->
+    <a href="https://wa.me/201278170320" target="_blank" class="footer-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>خدمة العملاء: 01278170320</span>
+    </a>
+  </div>
+
+  <!-- رسالة التنبيه -->
+  <div class="toast" id="toast">تم النسخ بنجاح! 📋</div>
+
+  <!-- سكريبت النسخ -->
+  <script>
+    function copyText(text, message) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+</html>
